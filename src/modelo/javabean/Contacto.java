@@ -2,13 +2,18 @@ package modelo.javabean;
 
 import java.util.Objects;
 
+/**
+ * esta es la creacion  de los atrivutos en privados para posteriormente introducir los datos en el constructor
+ */
 public class Contacto {
     private String nombre;
     private String apellidos;
     private String telefono;
     private String email;
     private String empresa;
-
+    /**
+     * este metodo sirve para la creacion del constructor con toodo de Contacto
+     */
     // constructor con todo
     public Contacto(String nombre, String apellidos, String telefono, String email, String empresa) {
         super();
@@ -19,12 +24,19 @@ public class Contacto {
         this.empresa = empresa;
     }
     // constructor sin nada
+
+    /**
+     * este metodo sirve para la creacion del constructor sin nada de Contacto
+     */
     public Contacto() {
         super();
     }
 
 
     //getter and setter
+    /**
+     * este metodo sirve para introducir y sacar  informacion
+     */
     public String getNombre() {
         return nombre;
     }
@@ -56,6 +68,9 @@ public class Contacto {
         this.empresa = empresa;
     }
     //ToString
+    /**
+     * Este metodo sirve para que no coja los métodos de Object
+     */
     @Override
     public String toString() {
         return "Contacto [nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono + ", email=" + email
@@ -63,7 +78,9 @@ public class Contacto {
     }
     // hashCode y Equals
 
-
+    /**
+     * Estos método junto al hasCode  lo que hace es comparar por el campo indicado en la creación del método
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,7 +88,9 @@ public class Contacto {
         Contacto contacto = (Contacto) o;
         return Objects.equals(nombre, contacto.nombre);
     }
-
+/**
+        * Estos método junto al equal  lo que hace es comparar por el campo indicado en la creación del método
+     */
     @Override
     public int hashCode() {
         return Objects.hash(nombre);
