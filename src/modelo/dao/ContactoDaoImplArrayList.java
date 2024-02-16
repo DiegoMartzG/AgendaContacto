@@ -2,17 +2,22 @@ package modelo.dao;
 import modelo.javabean.Contacto;
 
 import java.util.ArrayList;
-public class ContactoDaoImplArrayList {
+public class ContactoDaoImplArrayList implements ContactoDao {
     private ArrayList<Contacto> lista;
     private String nombre;
 
+    /**
+     * Creo un método  con una ArrayList y cargardatos() es un método para introducir los datos
+     */
     public ContactoDaoImplArrayList() {
         nombre="mi agenda";
         lista = new ArrayList<>();
         cargardatos();
     }
 
-
+    /**
+     * Con el constructor con todo creado en la clase Contacto  permite introducir de forma ordenada sindo lista la variable que hace referencia al ArrayList
+     */
     private void  cargardatos() {
         lista.add(new Contacto("Juan","Gutierrez","111222333","juan@mecanico.com","Taller Gutierrez"));
         lista.add(new Contacto("Marta","Sainz", "965789444","marta@decoratucasa.es","Decoración Total"));
@@ -22,9 +27,10 @@ public class ContactoDaoImplArrayList {
     }
 
 
-
-
-
+    /**
+     * estos son los geter and seter  que no tiene mucha utilidad es de forma obtativa  paro no influye
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
@@ -36,18 +42,34 @@ public class ContactoDaoImplArrayList {
 
 
     //  se crean al improtar contactoDaoImplArrayList(metodos no com el import)
+
+    /**
+     * crea un contacto nuevo
+     * @param contacto
+     * @return true
+     */
     @Override
     public boolean altaContacto(Contacto contacto) {
         contacto.setNombre(nombre);
         return true;
     }
 
+    /**
+     * te muestra el nombre eliminado
+     * @param contacto
+     * @return nombre
+     */
     @Override
     public boolean eliminarContacto(Contacto contacto) {
         return eliminarContacto(buscarUno(nombre));
 
     }
 
+    /**
+     * te indica en que posicion esta en caso de que exista  te indica la posicion y si no te devuekve -1 es decir no existe
+     * @param nombre
+     * @return null o posicion
+     */
     @Override
     public Contacto buscarUno(String nombre) {
         // creas la variable autor
@@ -61,6 +83,11 @@ public class ContactoDaoImplArrayList {
         }
     }
 
+    /**
+     * busca el numero introducido y si lo encuentra ta muestra la informacion y si no -1
+     * @param telefono
+     * @return -1 o posEncontrada
+     */
     @Override
     public Contacto buscarTelefono(String telefono) {
         int posEncontrada= -1;
@@ -80,6 +107,11 @@ public class ContactoDaoImplArrayList {
         }
     }
 
+    /**
+     * busca el email introducido y si lo encuentra ta muestra la informacion y si no -1
+     * @param email
+     * @return -1 o posEncontrada
+     */
     @Override
     public Contacto buscarEmail(String email) {
         // creamos variable con valor negativo para saber si esta o no
@@ -99,6 +131,12 @@ public class ContactoDaoImplArrayList {
 
         }
     }
+
+    /**
+     * Al crear la variable aux para referirse al arrayList
+     * @param nombre
+     * @return null o contacto
+     */
     @Override
     public ArrayList<Contacto> buscarContactosPorTresPrimeros(String nombre) {
         ArrayList<Contacto> aux= new ArrayList<>();
@@ -117,7 +155,11 @@ public class ContactoDaoImplArrayList {
         return null;
     }
 
-
+    /**
+     *  permite cambiar los datos en caso de sea correctoes true y si no  se pudo es false
+     * @param contacto
+     * @return false o true
+     */
 
     @Override
     public boolean cambiarDatos(Contacto contacto) {
@@ -131,7 +173,11 @@ public class ContactoDaoImplArrayList {
 
     }
 
-
+    /**
+     * Si es correcto te vuelve la informacion y si no te devuelve todo por defecto
+     * @param empresa
+     * @return aux o contacto
+     */
     @Override
     public ArrayList<Contacto> contactosPorEmpresa(String empresa) {
         ArrayList<Contacto> aux= new ArrayList<>();
@@ -148,7 +194,11 @@ public class ContactoDaoImplArrayList {
 
     }
 
-
+    /**
+     *  si se encuentra es true y si no false
+     * @param nombre
+     * @return true o false
+     */
     @Override
     public Contacto buscarUno(String nombre) {
         // TODO Auto-generated method stub
@@ -156,4 +206,4 @@ public class ContactoDaoImplArrayList {
     }
 
 }
-}
+
