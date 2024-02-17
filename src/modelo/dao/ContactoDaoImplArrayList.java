@@ -61,8 +61,7 @@ public class ContactoDaoImplArrayList implements ContactoDao {
      */
     @Override
     public boolean eliminarContacto(Contacto contacto) {
-        return eliminarContacto(buscarUno(nombre));
-
+        return lista.remove(contacto);
     }
 
     /**
@@ -72,15 +71,12 @@ public class ContactoDaoImplArrayList implements ContactoDao {
      */
     @Override
     public Contacto buscarUno(String nombre) {
-        // creas la variable autor
-        Contacto contacto =new Contacto();
-        contacto.setNombre(nombre);
-        int pos = contacto.indexOf(contacto);
-        if (pos == -1) {
-            return null;
-        }else {
-            return contacto.get(pos);
+        for (Contacto contacto : lista) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre)) {
+                return contacto;
+            }
         }
+        return null;
     }
 
     /**
@@ -194,16 +190,6 @@ public class ContactoDaoImplArrayList implements ContactoDao {
 
     }
 
-    /**
-     *  si se encuentra es true y si no false
-     * @param nombre
-     * @return true o false
-     */
-    @Override
-    public Contacto buscarUno(String nombre) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
 }
 
